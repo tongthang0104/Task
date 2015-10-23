@@ -27,25 +27,20 @@ class TaskListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return TaskController.sharedController.completedTaskArray.count
     }
-
-    /*
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
+        let tasks = TaskController.sharedController.completedTaskArray[indexPath.row]
+        cell.textLabel?.text = tasks.name
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
