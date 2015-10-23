@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Task: NSObject, NSCoding{
+class Task: NSObject{
 
     var name: String
     var notes: String?
     var due: NSDate?
-    var isComplete: Bool? //computed properties?
+    var isComplete: Bool //computed properties?
     
     private let NameKey = "name"
     private let notesKey = "notes"
@@ -21,16 +21,16 @@ class Task: NSObject, NSCoding{
     private let isCompleteKey = "isComplete"
     
     //optional initiliaze can write abc: String? = nil
-    init(name: String, notes: String? = nil, due: NSDate? = nil, isComplete: Bool? = nil) {
+    init(name: String, notes: String? = nil, due: NSDate? = nil, isComplete: Bool) {
         self.name = name
         self.notes = notes
         self.due = due
         self.isComplete = isComplete
     }
     
-    @objc required init?(coder aDecoder: NSCoder) {
-
-    }
+//    @objc required init?(coder aDecoder: NSCoder) {
+//
+//    }
     
     @objc func encodeWithCoder(aCoder: NSCoder) {
         
