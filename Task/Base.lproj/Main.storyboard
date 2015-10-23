@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AjW-bf-dh9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
@@ -32,7 +32,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ObZ-CM-8Vb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="ObZ-CM-8Vb">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ObZ-CM-8Vb" id="Ujb-Y1-u2c">
@@ -44,13 +44,14 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="wma-ze-qSc" id="e7I-YB-vZX"/>
+                            <outlet property="dataSource" destination="wma-ze-qSc" id="qKe-w3-geU"/>
                             <outlet property="delegate" destination="wma-ze-qSc" id="nYB-Y5-fOS"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="JDJ-Sd-oHe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ewj-A5-vPl">
                             <connections>
+                                <action selector="addButtonTapped:" destination="wma-ze-qSc" id="Ppf-kG-29x"/>
                                 <segue destination="o1k-xi-oIB" kind="show" id="7jq-D7-Sw1"/>
                             </connections>
                         </barButtonItem>

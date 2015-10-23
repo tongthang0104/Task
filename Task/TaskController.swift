@@ -11,6 +11,7 @@ import Foundation
 class TaskController {
     
     static let sharedController = TaskController()
+    static let TaskKey = "taskKey"
     
     var tasksArray: [Task] = []
     var completedTaskArray: [Task] = []
@@ -64,6 +65,9 @@ class TaskController {
         }
     }
  
+    func saveToPersistentStorage() {
+        NSKeyedArchiver.archiveRootObject(self.tasksArray, toFile: self.filePath()
+    }
 }
 
     
