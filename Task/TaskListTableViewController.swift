@@ -30,13 +30,13 @@ class TaskListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return TaskController.sharedController.completedTaskArray.count
+        return TaskController.sharedController.tasksArray.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
-        let tasks = TaskController.sharedController.completedTaskArray[indexPath.row]
+        let tasks = TaskController.sharedController.tasksArray[indexPath.row]
         cell.textLabel?.text = tasks.name
         return cell
     }
@@ -50,17 +50,19 @@ class TaskListTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
+       // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            
+            TaskController.sharedController.tasksArray.removeAtIndex(indexPath.row)
+            
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
         }    
     }
-    */
+   
 
     /*
     // Override to support rearranging the table view.

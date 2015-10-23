@@ -11,7 +11,7 @@ import Foundation
 class TaskController {
     
     static let sharedController = TaskController()
-    static let TaskKey = "taskKey"
+    private let TaskKey = "taskKey"
     
     var tasksArray: [Task] = []
     
@@ -30,7 +30,7 @@ class TaskController {
     var mockTasks: [Task] {
     
         let task1 = Task(name: "Complete Project", notes: "Part 2")
-        let task2 = Task (name: "Have Lunch", notes: "Eat bananas", due: NSDate())
+        let task2 = Task (name: "Have Lunch", notes: "Eat bananas", due: NSDate(timeIntervalSinceReferenceDate: NSTimeInterval(60*60*24*3)))
         task2.isComplete = true
         let task3 = Task(name: "Go to bed")
         task3.isComplete = false
@@ -59,9 +59,28 @@ class TaskController {
         
         }
     }
- 
+ //MARK: Persistence
+    
+    func loadFromPersistentStorage() {
+        
+        let unarchivedTasks = NSKeyedUnarchiver.unarchiveObjectWithFile(self.filePath(TaskKey))
+        
+        if let tasks = unarchivedTasks as? [Task] {
+            self.tasksArray = tasks
+        }
+    }
+    
     func saveToPersistentStorage() {
-        NSKeyedArchiver.archiveRootObject(self.tasksArray, toFile: self.filePath()
+        
+        NSKeyedArchiver.archiveRootObject(self.tasksArray, toFile: self.filePath(TaskKey))
+    }
+    
+    func filePath(key: String) -> String {
+        let directorySearchResults = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
+        let documentsPath: AnyObject = directorySearchResults[0]
+        let entriesPath = documentsPath.stringByAppendingString("/\(key).plist")
+        
+        return entriesPath
     }
 }
 
