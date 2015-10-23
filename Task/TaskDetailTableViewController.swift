@@ -10,7 +10,15 @@ import UIKit
 
 class TaskDetailTableViewController: UITableViewController {
 
-    var task: [Task] = []
+    var task = Task?()
+    
+    
+    @IBOutlet weak var taskNameTextField: UITextField!
+    
+    @IBOutlet weak var taskDueTextField: UITextField!
+    
+    @IBOutlet weak var taskNoteTextField: UITextView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +37,62 @@ class TaskDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        return 3
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
-
-    /*
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Name"
+        } else if section == 1 {
+            return "Due"
+        } else {
+            return "Notes"
+        }
+    }
+   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
+        let nameCell = tableView.dequeueReusableCellWithIdentifier("detailNameCell", forIndexPath: indexPath)
+        let dueCell = tableView.dequeueReusableCellWithIdentifier("detailDueCell", forIndexPath: indexPath)
+        let noteCell = tableView.dequeueReusableCellWithIdentifier("detailNoteCell", forIndexPath: indexPath)
+       
         // Configure the cell...
 
-        return cell
+        return nameCell; dueCell; noteCell
     }
-    */
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //MARK: Update With Task
+    
+    func updateWithTask(task: Task) {
+        self.task = task
+        self.taskNameTextField?.text = task.name
+        
+        if let due = task.due {
+            self.taskDueTextField?.text = due.stringValue()
+        }
+        
+        if let notes = task.notes {
+            self.taskNoteTextField?.text = notes
+        }
+    }
+    
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
