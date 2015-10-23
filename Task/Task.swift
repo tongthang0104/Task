@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Task: NSObject{
+class Task: NSObject {
 
     var name: String
     var notes: String?
@@ -21,11 +21,11 @@ class Task: NSObject{
     private let isCompleteKey = "isComplete"
     
     //optional initiliaze can write abc: String? = nil
-    init(name: String, notes: String? = nil, due: NSDate? = nil, isComplete: Bool) {
+    init(name: String, notes: String? = nil, due: NSDate? = nil) {
         self.name = name
         self.notes = notes
         self.due = due
-        self.isComplete = isComplete
+        self.isComplete = false
     }
     
 //    @objc required init?(coder aDecoder: NSCoder) {

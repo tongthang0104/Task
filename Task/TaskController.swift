@@ -29,11 +29,11 @@ class TaskController {
     var mockTasks: [Task] {
     
         let task1 = Task(name: "Complete Project", notes: "Part 2")
-        let task2 = Task (name: "Have Lunch", notes: "Eat bananas", due: NSDate(), isComplete: true)
+        let task2 = Task (name: "Have Lunch", notes: "Eat bananas", due: NSDate())
         task2.isComplete = true
         let task3 = Task(name: "Go to bed")
         task3.isComplete = false
-        let task4 = Task(name: "Prepare for lesson", notes: "on DevMnt Website", isComplete: false)
+        let task4 = Task(name: "Prepare for lesson", notes: "on DevMnt Website")
         task4.isComplete = false
         return [task1, task2, task3, task4]
     }
