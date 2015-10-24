@@ -66,15 +66,7 @@ class TaskDetailTableViewController: UITableViewController {
 
         return nameCell; dueCell; noteCell
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     //MARK: Update With Task
     
     func updateWithTask(task: Task) {
