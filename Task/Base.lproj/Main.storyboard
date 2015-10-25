@@ -34,7 +34,7 @@
                     <navigationItem key="navigationItem" id="JDJ-Sd-oHe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ewj-A5-vPl">
                             <connections>
-                                <segue destination="o1k-xi-oIB" kind="show" id="7jq-D7-Sw1"/>
+                                <segue destination="kJh-Pf-7Du" kind="show" id="7jq-D7-Sw1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -43,7 +43,7 @@
             </objects>
             <point key="canvasLocation" x="780" y="1067"/>
         </scene>
-        <!--Task Detail Table View Controller-->
+        <!--Title-->
         <scene sceneID="FLL-6W-eTS">
             <objects>
                 <tableViewController id="o1k-xi-oIB" customClass="TaskDetailTableViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
@@ -147,15 +147,35 @@
                             <outlet property="delegate" destination="o1k-xi-oIB" id="UtW-Cr-cYw"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="fmL-yr-C0E"/>
                     <connections>
+                        <outlet property="dueDatePicker" destination="Nih-CT-UnY" id="g9c-A2-nw1"/>
                         <outlet property="taskDueTextField" destination="ORE-p3-m8s" id="j3H-pB-Exi"/>
                         <outlet property="taskNameTextField" destination="2WP-Z1-odj" id="G1p-Cl-hlx"/>
                         <outlet property="taskNoteTextField" destination="BsW-tV-bHT" id="JXc-gE-KPC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1h-Pt-BbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="Nih-CT-UnY">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <gestureRecognizers/>
+                    <date key="date" timeIntervalSinceReferenceDate="467437581.82094002">
+                        <!--2015-10-25 03:46:21 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="datePickerValueChanged:" destination="o1k-xi-oIB" eventType="valueChanged" id="sg7-hV-QkO"/>
+                        <outletCollection property="gestureRecognizers" destination="KdK-Yc-rgd" appends="YES" id="02s-1J-pfN"/>
+                    </connections>
+                </datePicker>
+                <tapGestureRecognizer id="KdK-Yc-rgd">
+                    <connections>
+                        <action selector="userTappedView:" destination="o1k-xi-oIB" id="p0N-Oh-Oot"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1422" y="1067"/>
+            <point key="canvasLocation" x="2234" y="1067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rxt-Fw-DrH">
@@ -175,6 +195,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZ5-aq-lyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="1067"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8ok-4t-Xzl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kJh-Pf-7Du" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AHO-Vc-ajE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o1k-xi-oIB" kind="relationship" relationship="rootViewController" id="k5z-qv-qIF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gHy-FP-74G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1422" y="1067"/>
         </scene>
     </scenes>
 </document>
