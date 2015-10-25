@@ -43,12 +43,11 @@ class TaskController {
         self.tasksArray = mockTasks
         
     }
-    
-   
-    
+
     func addTask(task: Task) {
         tasksArray.append(task)
     }
+    
     
     func remove(task: Task) {
       
@@ -59,6 +58,7 @@ class TaskController {
         
         }
     }
+    
  //MARK: Persistence
     
     func loadFromPersistentStorage() {
