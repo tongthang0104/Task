@@ -28,9 +28,9 @@ class ButtonTableViewCell: UITableViewCell {
   
     func updateButton(isComplete: Bool) {
         if isComplete == true {
-            button.imageView?.image = UIImage(named: "complete")
+            button.setImage(UIImage(named: "complete"), forState: .Normal)
         } else {
-            button.imageView?.image = UIImage(named: "incomplete")
+            button.setImage(UIImage(named: "incomplete"), forState: .Normal)
         }
     }
     override func setSelected(selected: Bool, animated: Bool) {
@@ -39,6 +39,7 @@ class ButtonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 }
+
 extension ButtonTableViewCell {
     func updateWithTask(task: Task) {
         primaryLabel.text = task.name
