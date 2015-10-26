@@ -9,11 +9,9 @@
 import Foundation
 
 extension NSDate {
-    
     func stringValue() -> String {
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
-        
         return formatter.stringFromDate(self)
     }
     

@@ -52,9 +52,6 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
         tableView.reloadData()
         
     }
-    
-    
-    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -72,15 +69,8 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
-            
         }    
     }
-    
-    
-    
-    
-    
-    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {

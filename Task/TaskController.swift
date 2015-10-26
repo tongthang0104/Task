@@ -21,7 +21,7 @@ class TaskController {
         return tasksArray.filter({$0.isComplete.boolValue})
     }
     
-    // isCompleted = false
+    //isCompleted = false
     var incompletedTaskArray: [Task] {
         return tasksArray.filter({!$0.isComplete.boolValue})
     }
@@ -41,21 +41,18 @@ class TaskController {
     
     init() {
         self.tasksArray = mockTasks
-        
     }
 
     func addTask(task: Task) {
         tasksArray.append(task)
     }
-    
-    
+
     func remove(task: Task) {
       
         let index = tasksArray.indexOf(task)
         
         if let index = index {
         self.tasksArray.removeAtIndex(index)
-        
         }
     }
     

@@ -25,7 +25,6 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
     
     @IBOutlet weak var dueDatePicker: UIDatePicker!
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

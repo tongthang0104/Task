@@ -14,26 +14,23 @@ class Task: NSObject, NSCoding {
     var notes: String?
     var due: NSDate?
     var isComplete: Bool //computed properties?
-    
-    
+
     struct PropertyKey {
-        
         static let nameKey = "name"
         static let notesKey = "notes"
         static let dueKey = "due"
         static let isCompleteKey = "isComplete"
     }
     
-    //optional initiliaze can write abc: String? = nil
+    //Optional initiliaze can write abc: String? = nil
     init(name: String, notes: String? = nil, due: NSDate? = nil) {
         self.name = name
         self.notes = notes
         self.due = due
         self.isComplete = false
-        
         super.init()
     }
- 
+    
     //MARK: NSCoding
     
    @objc func encodeWithCoder(aCoder: NSCoder) {
@@ -60,9 +57,8 @@ class Task: NSObject, NSCoding {
         self.isComplete = aDecoder.decodeBoolForKey(PropertyKey.isCompleteKey)
         
         super.init()
-        
     }
-
+    
     override func isEqual(object: AnyObject?) -> Bool {
         if let rhs = object as? Task {
             
@@ -71,6 +67,4 @@ class Task: NSObject, NSCoding {
             return false
         }
     }
-
-    
 }

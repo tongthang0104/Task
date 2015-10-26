@@ -11,7 +11,6 @@ import UIKit
 protocol ButtonTableViewCellDelegate {
     func buttonTappedValueChanged(cell: ButtonTableViewCell)
 }
-
 class ButtonTableViewCell: UITableViewCell {
   
     @IBOutlet weak var primaryLabel: UILabel!
