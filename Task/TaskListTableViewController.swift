@@ -30,12 +30,12 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return TaskController.sharedController.incompletedTaskArray.count
+        return TaskController.sharedController.tasksArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! ButtonTableViewCell
-        let tasks = TaskController.sharedController.incompletedTaskArray[indexPath.row]
+        let tasks = TaskController.sharedController.tasksArray[indexPath.row]
         
         cell.updateWithTask(tasks)
         cell.delegate = self
@@ -44,7 +44,7 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
     
     func buttonTappedValueChanged(cell: ButtonTableViewCell) {
         guard let indexPath = tableView.indexPathForCell(cell) else {return}
-        let tasks = TaskController.sharedController.incompletedTaskArray[indexPath.row]
+        let tasks = TaskController.sharedController.tasksArray[indexPath.row]
         tasks.isComplete = !tasks.isComplete.boolValue
         TaskController.sharedController.saveToPersistentStorage()
         
@@ -93,7 +93,7 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
                 _ = displayTask.view
                 
                 if let selectedRows = tableView.indexPathForSelectedRow?.row {
-                    let task = TaskController.sharedController.incompletedTaskArray[selectedRows]
+                    let task = TaskController.sharedController.tasksArray[selectedRows]
                     displayTask.updateWithTask(task)
                 }
             }
