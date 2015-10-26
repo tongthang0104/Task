@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskListTableViewController: UITableViewController {
+class TaskListTableViewController: UITableViewController, ButtonTableViewCellDelegate {
     
     //MARK: Properties
     
@@ -16,12 +16,11 @@ class TaskListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,18 +30,31 @@ class TaskListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return TaskController.sharedController.incompletedTaskArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! ButtonTableViewCell
         let tasks = TaskController.sharedController.incompletedTaskArray[indexPath.row]
-        cell.textLabel?.text = tasks.name
+        cell.updateWithTask(tasks)
+        cell.delegate = self
         return cell
     }
+    
+    func buttonTappedValueChanged(cell: ButtonTableViewCell) {
+        guard let indexPath = tableView.indexPathForCell(cell) else {return}
+        let tasks = TaskController.sharedController.incompletedTaskArray[indexPath.row]
+        tasks.isComplete = !tasks.isComplete.boolValue
+        TaskController.sharedController.saveToPersistentStorage()
+        
+        tableView.reloadData()
+        
+    }
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -63,10 +75,15 @@ class TaskListTableViewController: UITableViewController {
             
         }    
     }
+    
+    
+    
+    
+    
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
     }
     */
 
