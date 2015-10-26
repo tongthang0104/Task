@@ -74,7 +74,7 @@
                                 <connections>
                                     <outlet property="button" destination="g5a-Qg-kUl" id="DdL-HV-mVm"/>
                                     <outlet property="primaryLabel" destination="MGb-g7-qZF" id="lGR-AL-3c8"/>
-                                    <segue destination="kJh-Pf-7Du" kind="show" identifier="editTask" id="W65-PV-8Vu"/>
+                                    <segue destination="o1k-xi-oIB" kind="show" identifier="editTask" id="J7W-YF-7XU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -86,7 +86,7 @@
                     <navigationItem key="navigationItem" title="My Tasks" id="JDJ-Sd-oHe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ewj-A5-vPl">
                             <connections>
-                                <segue destination="kJh-Pf-7Du" kind="show" identifier="addNewTask" id="7jq-D7-Sw1"/>
+                                <segue destination="o1k-xi-oIB" kind="show" identifier="addTask" id="e1y-S4-o9s"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -164,18 +164,17 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Notes" id="pGG-4N-yJc">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailNoteCell" id="zZH-3H-gVk">
-                                        <rect key="frame" x="0.0" y="236" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailNoteCell" rowHeight="260" id="zZH-3H-gVk">
+                                        <rect key="frame" x="0.0" y="236" width="600" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zZH-3H-gVk" id="dqT-iE-SIS">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="259.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BsW-tV-bHT">
-                                                    <rect key="frame" x="8" y="8" width="584" height="27.5"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="243.5"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -238,7 +237,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2037" y="1067"/>
+            <point key="canvasLocation" x="1464" y="1067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rxt-Fw-DrH">
@@ -259,30 +258,11 @@
             </objects>
             <point key="canvasLocation" x="139" y="1067"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="8ok-4t-Xzl">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kJh-Pf-7Du" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AHO-Vc-ajE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="o1k-xi-oIB" kind="relationship" relationship="rootViewController" id="k5z-qv-qIF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gHy-FP-74G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1533" y="1023"/>
-        </scene>
     </scenes>
     <resources>
         <image name="incomplete" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7jq-D7-Sw1"/>
+        <segue reference="e1y-S4-o9s"/>
     </inferredMetricsTieBreakers>
 </document>

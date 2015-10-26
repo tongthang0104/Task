@@ -74,14 +74,14 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
         
         self.task = task
         title = task.name
-        self.taskNameTextField?.text = task.name
+        self.taskNameTextField.text = task.name
         
         if let due = task.due {
-            self.taskDueTextField?.text = due.stringValue()
+            self.taskDueTextField.text = due.stringValue()
         }
         
         if let notes = task.notes {
-            self.taskNoteTextField?.text = notes
+            self.taskNoteTextField.text = notes
         }
     }
 
