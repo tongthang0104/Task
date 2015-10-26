@@ -36,28 +36,29 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
     //MARK: Action
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
-        
-        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddTaskMode {
-            dismissViewControllerAnimated(true, completion: nil)
-        }
-        else {
-            navigationController!.popViewControllerAnimated(true)
-        }
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
         
-        
-        
+        if let task = self.task {
+            task.name = self.taskNameTextField.text!
+            task.due = dueDateValue
+            task.notes = self.taskNoteTextField.text
+            updateWithTask(task)
+            
+        } else {
+            let newTask = Task(name: self.taskNameTextField.text!, notes: self.taskNoteTextField.text, due: dueDateValue)
+            TaskController.sharedController.addTask(newTask)
+            self.task = newTask
+        }
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func datePickerValueChanged(sender: UIDatePicker) {
         
             taskDueTextField.text = sender.date.stringValue()
             self.dueDateValue = sender.date
-    
     }
     
     @IBAction func userTappedView(sender: UITapGestureRecognizer) {
@@ -71,7 +72,7 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
     func updateWithTask(task: Task) {
         
         self.task = task
-        self.taskTitle.title = task.name
+        title = task.name
         self.taskNameTextField?.text = task.name
         
         if let due = task.due {
