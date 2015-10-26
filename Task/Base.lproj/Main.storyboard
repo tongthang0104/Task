@@ -199,7 +199,14 @@
                             <outlet property="delegate" destination="o1k-xi-oIB" id="UtW-Cr-cYw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="fmL-yr-C0E"/>
+                    <navigationItem key="navigationItem" title="Title" id="fmL-yr-C0E">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="f4L-YL-ceU">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="o1k-xi-oIB" id="JAI-SK-uJE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BWS-hn-yBf"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="dueDatePicker" destination="Nih-CT-UnY" id="g9c-A2-nw1"/>
                         <outlet property="taskDueTextField" destination="ORE-p3-m8s" id="j3H-pB-Exi"/>
@@ -209,7 +216,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1h-Pt-BbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="Nih-CT-UnY">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="603" height="250"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <gestureRecognizers/>
