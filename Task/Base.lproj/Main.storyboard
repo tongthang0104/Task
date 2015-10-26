@@ -24,6 +24,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="kJh-Pf-7Du" kind="show" identifier="editTask" id="W65-PV-8Vu"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -34,7 +37,7 @@
                     <navigationItem key="navigationItem" id="JDJ-Sd-oHe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ewj-A5-vPl">
                             <connections>
-                                <segue destination="kJh-Pf-7Du" kind="show" id="7jq-D7-Sw1"/>
+                                <segue destination="kJh-Pf-7Du" kind="show" identifier="addNewTask" id="7jq-D7-Sw1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -213,7 +216,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHy-FP-74G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="1067"/>
+            <point key="canvasLocation" x="1660" y="1067"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7jq-D7-Sw1"/>
+    </inferredMetricsTieBreakers>
 </document>
