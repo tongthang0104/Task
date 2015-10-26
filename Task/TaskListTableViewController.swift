@@ -9,6 +9,10 @@
 import UIKit
 
 class TaskListTableViewController: UITableViewController {
+    
+    //MARK: Properties
+    
+    var task: Task?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +37,12 @@ class TaskListTableViewController: UITableViewController {
         return TaskController.sharedController.tasksArray.count
     }
     
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
         let tasks = TaskController.sharedController.tasksArray[indexPath.row]
         cell.textLabel?.text = tasks.name
         return cell
     }
-    
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -50,7 +51,7 @@ class TaskListTableViewController: UITableViewController {
     }
     */
 
-       // Override to support editing the table view.
+    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
@@ -62,8 +63,6 @@ class TaskListTableViewController: UITableViewController {
             
         }    
     }
-   
-
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
@@ -79,14 +78,26 @@ class TaskListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "editTask" {
+            
+            if let displayTask = segue.destinationViewController as? TaskDetailTableViewController {
+                _ = displayTask.view
+                
+                let indexPath = tableView.indexPathForSelectedRow
+                
+                if let selectedRows = indexPath?.row {
+                    
+                    let task = TaskController.sharedController.tasksArray[selectedRows]
+                
+                    displayTask.updateWithTask(task)
+                    TaskController.sharedController.saveToPersistentStorage()
+                    
+                }
+            }
+        }
     }
-    */
-
 }
