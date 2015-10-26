@@ -34,12 +34,12 @@ class TaskListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return TaskController.sharedController.tasksArray.count
+        return TaskController.sharedController.incompletedTaskArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
-        let tasks = TaskController.sharedController.tasksArray[indexPath.row]
+        let tasks = TaskController.sharedController.incompletedTaskArray[indexPath.row]
         cell.textLabel?.text = tasks.name
         return cell
     }
@@ -91,11 +91,9 @@ class TaskListTableViewController: UITableViewController {
                 
                 if let selectedRows = indexPath?.row {
                     
-                    let task = TaskController.sharedController.tasksArray[selectedRows]
-                
+                    let task = TaskController.sharedController.incompletedTaskArray[selectedRows]
                     displayTask.updateWithTask(task)
                     TaskController.sharedController.saveToPersistentStorage()
-                    
                 }
             }
         }

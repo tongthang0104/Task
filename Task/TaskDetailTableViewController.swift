@@ -32,9 +32,6 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
         //Configure the UIDatePicker when screen loaded
         
        taskDueTextField.inputView = dueDatePicker
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     //MARK: Action
@@ -50,41 +47,6 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
         self.taskDueTextField?.resignFirstResponder()
         self.taskNoteTextField?.resignFirstResponder()
         self.taskNameTextField?.resignFirstResponder()
-    }
-
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-        return 3
-    }
- 
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Name"
-        } else if section == 1 {
-            return "Due"
-        } else {
-            return "Notes"
-        }
-    }
-   
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let nameCell = tableView.dequeueReusableCellWithIdentifier("detailNameCell", forIndexPath: indexPath)
-        let dueCell = tableView.dequeueReusableCellWithIdentifier("detailDueCell", forIndexPath: indexPath)
-        let noteCell = tableView.dequeueReusableCellWithIdentifier("detailNoteCell", forIndexPath: indexPath)
-       
-        // Configure the cell...
-
-        return nameCell; dueCell; noteCell
-        
     }
 
     //MARK: Update With Task
