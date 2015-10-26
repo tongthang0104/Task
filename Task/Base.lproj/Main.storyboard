@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Task List Table View Controller-->
+        <!--My Tasks-->
         <scene sceneID="B7T-WM-V1K">
             <objects>
                 <tableViewController id="wma-ze-qSc" customClass="TaskListTableViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,16 +15,47 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="ObZ-CM-8Vb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="ObZ-CM-8Vb" customClass="ButtonTableViewCell" customModule="Task" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ObZ-CM-8Vb" id="Ujb-Y1-u2c">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGb-g7-qZF">
+                                            <rect key="frame" x="8" y="7" width="548" height="28.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5a-Qg-kUl">
+                                            <rect key="frame" x="564" y="7" width="28" height="28.5"/>
+                                            <animations/>
+                                            <state key="normal" backgroundImage="incomplete"/>
+                                            <connections>
+                                                <action selector="buttonTapped:" destination="ObZ-CM-8Vb" eventType="touchUpInside" id="kxk-g1-bb8"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="g5a-Qg-kUl" secondAttribute="bottom" id="Cmg-IT-PDr"/>
+                                        <constraint firstItem="MGb-g7-qZF" firstAttribute="top" secondItem="Ujb-Y1-u2c" secondAttribute="topMargin" constant="-1" id="NFD-Pv-BGf"/>
+                                        <constraint firstItem="MGb-g7-qZF" firstAttribute="centerY" secondItem="Ujb-Y1-u2c" secondAttribute="centerY" id="Rvw-Hh-1Cy"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="MGb-g7-qZF" secondAttribute="leading" id="T1O-l0-sCu"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="g5a-Qg-kUl" secondAttribute="trailing" id="TJS-SI-AUt"/>
+                                        <constraint firstItem="g5a-Qg-kUl" firstAttribute="leading" secondItem="Ujb-Y1-u2c" secondAttribute="leadingMargin" constant="556" id="Zz6-bc-r3M"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="MGb-g7-qZF" secondAttribute="bottom" id="bbf-hI-Hfz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="MGb-g7-qZF" secondAttribute="trailing" constant="36" id="hf6-zB-nom"/>
+                                        <constraint firstItem="g5a-Qg-kUl" firstAttribute="top" secondItem="Ujb-Y1-u2c" secondAttribute="topMargin" constant="-1" id="hm4-Gu-953"/>
+                                        <constraint firstItem="g5a-Qg-kUl" firstAttribute="centerY" secondItem="Ujb-Y1-u2c" secondAttribute="centerY" id="tI4-Mk-UZr"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="button" destination="g5a-Qg-kUl" id="DdL-HV-mVm"/>
+                                    <outlet property="primaryLabel" destination="MGb-g7-qZF" id="lGR-AL-3c8"/>
                                     <segue destination="kJh-Pf-7Du" kind="show" identifier="editTask" id="W65-PV-8Vu"/>
                                 </connections>
                             </tableViewCell>
@@ -34,7 +65,7 @@
                             <outlet property="delegate" destination="wma-ze-qSc" id="nYB-Y5-fOS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JDJ-Sd-oHe">
+                    <navigationItem key="navigationItem" title="My Tasks" id="JDJ-Sd-oHe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ewj-A5-vPl">
                             <connections>
                                 <segue destination="kJh-Pf-7Du" kind="show" identifier="addNewTask" id="7jq-D7-Sw1"/>
@@ -178,7 +209,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2234" y="1067"/>
+            <point key="canvasLocation" x="2037" y="1067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rxt-Fw-DrH">
@@ -216,9 +247,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHy-FP-74G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="1067"/>
+            <point key="canvasLocation" x="1412" y="1067"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="incomplete" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7jq-D7-Sw1"/>
     </inferredMetricsTieBreakers>
