@@ -30,12 +30,13 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return TaskController.sharedController.tasksArray.count
+        return TaskController.sharedController.incompletedTaskArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! ButtonTableViewCell
-        let tasks = TaskController.sharedController.tasksArray[indexPath.row]
+        let tasks = TaskController.sharedController.incompletedTaskArray[indexPath.row]
+        
         cell.updateWithTask(tasks)
         cell.delegate = self
         return cell
@@ -43,7 +44,7 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
     
     func buttonTappedValueChanged(cell: ButtonTableViewCell) {
         guard let indexPath = tableView.indexPathForCell(cell) else {return}
-        let tasks = TaskController.sharedController.tasksArray[indexPath.row]
+        let tasks = TaskController.sharedController.incompletedTaskArray[indexPath.row]
         tasks.isComplete = !tasks.isComplete.boolValue
         TaskController.sharedController.saveToPersistentStorage()
         
@@ -61,9 +62,8 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            
-            TaskController.sharedController.tasksArray.removeAtIndex(indexPath.row)
-            
+            let task = TaskController.sharedController.incompletedTaskArray[indexPath.row]
+            TaskController.sharedController.remove(task)
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
@@ -92,12 +92,9 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
             if let displayTask = segue.destinationViewController as? TaskDetailTableViewController {
                 _ = displayTask.view
                 
-                let indexPath = tableView.indexPathForSelectedRow
-                
-                if let selectedRows = indexPath?.row {
-                    let task = TaskController.sharedController.tasksArray[selectedRows]
+                if let selectedRows = tableView.indexPathForSelectedRow?.row {
+                    let task = TaskController.sharedController.incompletedTaskArray[selectedRows]
                     displayTask.updateWithTask(task)
-                    TaskController.sharedController.saveToPersistentStorage()
                 }
             }
         }
