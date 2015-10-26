@@ -16,16 +16,14 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
+  
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
