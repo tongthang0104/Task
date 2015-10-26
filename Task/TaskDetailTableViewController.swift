@@ -35,6 +35,24 @@ class TaskDetailTableViewController: UITableViewController, UITextFieldDelegate 
     
     //MARK: Action
     
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        
+        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddTaskMode {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+        else {
+            navigationController!.popViewControllerAnimated(true)
+        }
+    }
+    
+    @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
+        
+        
+        
+    }
+    
     @IBAction func datePickerValueChanged(sender: UIDatePicker) {
         
             taskDueTextField.text = sender.date.stringValue()
