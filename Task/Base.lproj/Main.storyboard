@@ -205,7 +205,11 @@
                                 <action selector="cancelButtonTapped:" destination="o1k-xi-oIB" id="JAI-SK-uJE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BWS-hn-yBf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BWS-hn-yBf">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="o1k-xi-oIB" id="m3q-xx-g3d"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dueDatePicker" destination="Nih-CT-UnY" id="g9c-A2-nw1"/>
@@ -272,7 +276,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHy-FP-74G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1412" y="1067"/>
+            <point key="canvasLocation" x="1533" y="1023"/>
         </scene>
     </scenes>
     <resources>
