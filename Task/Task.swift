@@ -50,10 +50,15 @@ class Task: NSObject, NSCoding {
     }
     
     override func isEqual(object: AnyObject?) -> Bool {
-        return object?.title == self.title
+        if let rhs = object {
+            return self.title == rhs.title && self.note == rhs.note && self.isComplete == rhs.isComplete
+        }
+        return false
     }
 }
 
-//func ==(lhs: Task, rhs: Task) -> Bool {
-//    return lhs.title == rhs.title && lhs.note == rhs.note && lhs.dueDate == rhs.dueDate && lhs.isComplete == rhs.isComplete
-//}
+func ==(lhs: Task, rhs: Task) -> Bool {
+    return lhs.title == rhs.title && lhs.note == rhs.note && lhs.isComplete == rhs.isComplete
+}
+
+
