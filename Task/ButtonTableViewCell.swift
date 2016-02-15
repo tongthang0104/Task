@@ -8,12 +8,16 @@
 
 import UIKit
 
-
+protocol ButtonTableViewCellDelegate {
+    func buttonCellButtonTapped(sender: ButtonTableViewCell)
+}
 
 class ButtonTableViewCell: UITableViewCell {
 
     @IBOutlet var taskTitleLabel: UILabel!
     @IBOutlet var button: UIButton!
+    
+    var delegate: ButtonTableViewCellDelegate?
     
     
     override func awakeFromNib() {
@@ -29,15 +33,17 @@ class ButtonTableViewCell: UITableViewCell {
     
     //MARK: - Actions
     @IBAction func buttonTapped(sender: UIButton) {
-        
+        if let delegate = delegate {
+            delegate.buttonCellButtonTapped(self)
+        }
     }
     
     //MARK: - Functions
     func updateButton(isComplete: Bool) {
         if isComplete {
-            button.imageView?.image = UIImage(named: "complete")
+            button.setImage(UIImage(named: "complete"), forState: .Normal)
         } else {
-            button.imageView?.image = UIImage(named: "incomplete")
+            button.setImage(UIImage(named: "incomplete"), forState: .Normal)
         }
     }
     

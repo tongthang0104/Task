@@ -33,6 +33,7 @@ class TaskListTableViewController: UITableViewController {
         
         let task = TaskController.sharedController.tasks[indexPath.row]
         cell.updateWithTask(task)
+        cell.delegate = self
         
         return cell
     }
@@ -61,7 +62,20 @@ class TaskListTableViewController: UITableViewController {
     }
 }
 
-
+extension TaskListTableViewController: ButtonTableViewCellDelegate {
+    func buttonCellButtonTapped(sender: ButtonTableViewCell) {
+        
+        if let indexPath = tableView.indexPathForCell(sender) {
+            let task = TaskController.sharedController.tasks[indexPath.row]
+            
+            task.isComplete = !task.isComplete
+            
+            TaskController.sharedController.saveToPersistentStorage()
+            
+            tableView.reloadData()
+        }
+    }
+}
 
 
 
