@@ -29,10 +29,10 @@ class TaskListTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! ButtonTableViewCell
         
         let task = TaskController.sharedController.tasks[indexPath.row]
-        cell.textLabel?.text = task.title
+        cell.updateWithTask(task)
         
         return cell
     }
@@ -48,4 +48,45 @@ class TaskListTableViewController: UITableViewController {
         }
     }
 
+    //MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toTaskDetail" {
+            let taskDetailViewController = segue.destinationViewController as? TaskDetailTableViewController
+            
+            if let index = tableView.indexPathForSelectedRow?.row {
+                let task = TaskController.sharedController.tasks[index]
+                taskDetailViewController?.task = task
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

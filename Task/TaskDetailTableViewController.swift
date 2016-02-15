@@ -13,12 +13,15 @@ class TaskDetailTableViewController: UITableViewController {
     @IBOutlet var taskNameTextField: UITextField!
     @IBOutlet var dueDateTextField: UITextField!
     @IBOutlet var notesTextView: UITextView!
+    @IBOutlet var dueDatePicker: UIDatePicker!
     
     var task: Task?
+    var dueDateValue: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        dueDateTextField.inputView = dueDatePicker
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -41,14 +44,24 @@ class TaskDetailTableViewController: UITableViewController {
         return 1
     }
     
-    //MARK: - Buttons
+    //MARK: - Actions
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
         if let name = taskNameTextField.text, notes = notesTextView.text {
             let task = Task(title: name, note: notes, dueDate: nil)
             self.task = task
             
             TaskController.sharedController.addTask(task)
+            navigationController?.popToRootViewControllerAnimated(true)
         }
+    }
+    @IBAction func datePickerValueChanged(sender: UIDatePicker) {
+        dueDateTextField.text = sender.date.stringValue()
+        dueDateValue = sender.date
+    }
+    @IBAction func userTappedView(sender: UITapGestureRecognizer) {
+        self.taskNameTextField.resignFirstResponder()
+        self.dueDateTextField.resignFirstResponder()
+        self.notesTextView.resignFirstResponder()
     }
     
     //MARK: - Functions
