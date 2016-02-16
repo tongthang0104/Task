@@ -20,11 +20,8 @@ class TaskDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         dueDateTextField.inputView = dueDatePicker
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+        
         if let task = self.task {
             updateWithTask(task)
         }
@@ -46,13 +43,19 @@ class TaskDetailTableViewController: UITableViewController {
     
     //MARK: - Actions
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
-        if let name = taskNameTextField.text, notes = notesTextView.text {
-            let task = Task(title: name, note: notes, dueDate: nil)
-            self.task = task
-            
-            TaskController.sharedController.addTask(task)
-            navigationController?.popToRootViewControllerAnimated(true)
+        if let task = self.task {
+            task.dueDate = dueDatePicker.date
+            task.note = notesTextView.text
+        } else {
+            if let title = taskNameTextField.text {
+                let dueDate = dueDatePicker.date
+                let note = notesTextView.text
+                
+                let task = Task(title: title, note: note, dueDate: dueDate)
+                TaskController.sharedController.addTask(task)
+            }
         }
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     @IBAction func datePickerValueChanged(sender: UIDatePicker) {
         dueDateTextField.text = sender.date.stringValue()
@@ -68,8 +71,8 @@ class TaskDetailTableViewController: UITableViewController {
     func updateWithTask(task: Task) {
         taskNameTextField.text = task.title
         if let notes = task.note, dueDate = task.dueDate {
-            notesTextView.text = notes
-            dueDateTextField.text = dueDate.stringValue()
+            self.notesTextView.text = notes
+            self.dueDateTextField.text = dueDate.stringValue()
         }
     }
 }

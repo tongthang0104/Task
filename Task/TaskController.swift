@@ -25,7 +25,9 @@ class TaskController {
     }
     
     init() {
-        self.tasks = self.mockTasks
+        
+        // Uncomment the next line to use mock data
+//        self.tasks = self.mockTasks
         loadFromPersistentStorage()
     }
     
