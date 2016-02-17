@@ -13,6 +13,8 @@ class TaskController {
     // filePath string key
     private let kTasksKey = "tasks"
     
+    static let sharedInstance = TaskController()
+    
     var tasks: [Task] = []
     var completedTasks: [Task] {
         get {
@@ -28,7 +30,9 @@ class TaskController {
     
     //CREATE
     func addTask(task: Task) {
+        print(tasks.count)
         tasks.append(task)
+        print(tasks.count)
     }
     
     init() {
